@@ -11,6 +11,11 @@ app.use(express.json());
 app.use("/users", userController);
 app.use("/notes", noteController);
 
+
+// 404 Handling
+app.get("/" , (req, res, next) => {
+  res.status(201).send({ success: false, message: "Hello" });
+});
 // 404 Handling
 app.use((req, res, next) => {
   res.status(404).send({ success: false, message: "404 Not Found" });
